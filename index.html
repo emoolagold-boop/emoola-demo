@@ -210,12 +210,7 @@
             margin-bottom: 30px;
         }
         
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
+        .feature-grid { display: block; }
         
         .feature-card {
             background: #0a0a0a;
@@ -291,11 +286,7 @@
             margin-bottom: 40px;
         }
         
-        .legal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
+        .legal-grid { display: block; }
         
         .legal-section {
             background: #0a0a0a;
@@ -585,9 +576,7 @@
 
         /* iPad and Old Safari Fixes */
         @supports not (display: grid) {
-            .feature-grid, .legal-grid {
-                display: block !important;
-            }
+            .feature-grid, .legal-grid { display: block; }
             .feature-card, .legal-section {
                 margin-bottom: 20px;
                 display: block !important;
@@ -618,6 +607,42 @@
             -webkit-transform: none !important;
         }
         
+        /* Complete Grid Fallback for Old Browsers */
+        .feature-grid {
+            display: block;
+        }
+        
+        .feature-card {
+            display: block;
+            margin-bottom: 30px;
+        }
+        
+        .legal-grid {
+            display: block;
+        }
+        
+        .legal-section {
+            display: block;
+            margin-bottom: 30px;
+        }
+        
+        /* Modern browsers override */
+        @supports (display: grid) {
+            .feature-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .legal-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .feature-card, .legal-section {
+                margin-bottom: 0;
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -644,9 +669,7 @@
                 font-size: 28px;
             }
             
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
+            .feature-grid { display: block; }
 
             .sat-close {
                 top: 12px;
@@ -803,33 +826,19 @@
         <iframe id="satFrame" src="" title="Infrastructure Monitoring" loading="lazy"></iframe>
     </div>
 
-    <script>
+        <script>
     (function() {
         'use strict';
 
-        // Disable reveal animations on old iPads (iOS 5-10)
-        var isOldIOS = /iPad.*CPU.*OS [5-9]_/i.test(navigator.userAgent) || 
-                       /iPad.*CPU.*OS 10_/i.test(navigator.userAgent);
-        
-        if (isOldIOS) {
-            var reveals = document.querySelectorAll('.reveal');
-            for (var i = 0; i < reveals.length; i++) {
-                reveals[i].style.opacity = '1';
-                reveals[i].style.transform = 'none';
-                reveals[i].classList.add('visible');
-            }
-        } else {
-            // Scroll reveal for modern browsers
-            var els = document.querySelectorAll('.reveal');
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) {
-                    if (e.isIntersecting) e.target.classList.add('visible');
-                });
-            }, { threshold: 0.08 });
-            els.forEach(function(el) { obs.observe(el); });
+        // Force all sections visible immediately for old devices
+        var allSections = document.getElementsByTagName('section');
+        for (var i = 0; i < allSections.length; i++) {
+            allSections[i].style.opacity = '1';
+            allSections[i].style.transform = 'none';
+            allSections[i].className = allSections[i].className.replace('reveal', '');
         }
 
-        // Satellite overlay
+        // Satellite overlay - simplified for old browsers
         var overlay = document.getElementById('satOverlay');
         var trigger = document.getElementById('satTrigger');
         var closeBtn = document.getElementById('satClose');
@@ -838,46 +847,48 @@
         var isOpen = false;
 
         function openSat() {
+            if (!overlay || !frame) return;
             if (isOpen) return;
             isOpen = true;
-            if (!frame.getAttribute('src') || frame.getAttribute('src') === '') {
-                frame.setAttribute('src', appUrl);
-            }
-            overlay.classList.add('active');
+            frame.src = appUrl;
+            overlay.style.opacity = '1';
+            overlay.style.visibility = 'visible';
+            overlay.className = 'sat-overlay active';
             document.body.style.overflow = 'hidden';
-            history.pushState({overlay: true}, '', '#infrastructure');
-            setTimeout(function() { closeBtn.focus(); }, 450);
         }
 
-        function closeSat(viaBackButton) {
+        function closeSat() {
+            if (!overlay) return;
             if (!isOpen) return;
             isOpen = false;
-            overlay.classList.remove('active');
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+            overlay.className = 'sat-overlay';
             document.body.style.overflow = '';
-            if (!viaBackButton && window.location.hash === '#infrastructure') {
-                history.back();
-            }
-            trigger.focus();
         }
 
-        if (trigger) trigger.addEventListener('click', openSat);
-        if (closeBtn) closeBtn.addEventListener('click', closeSat);
+        if (trigger && trigger.addEventListener) {
+            trigger.addEventListener('click', openSat);
+        } else if (trigger && trigger.attachEvent) {
+            trigger.attachEvent('onclick', openSat);
+        }
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && isOpen) closeSat();
-        });
+        if (closeBtn && closeBtn.addEventListener) {
+            closeBtn.addEventListener('click', closeSat);
+        } else if (closeBtn && closeBtn.attachEvent) {
+            closeBtn.attachEvent('onclick', closeSat);
+        }
 
-        if (overlay) {
-            overlay.addEventListener('click', function(e) {
-                if (e.target === overlay) closeSat();
+        // Escape key
+        if (document.addEventListener) {
+            document.addEventListener('keydown', function(e) {
+                if (e.keyCode === 27 && isOpen) closeSat();
+            });
+        } else if (document.attachEvent) {
+            document.attachEvent('onkeydown', function(e) {
+                if (e.keyCode === 27 && isOpen) closeSat();
             });
         }
-
-        window.addEventListener('popstate', function() {
-            if (isOpen) {
-                closeSat(true);
-            }
-        });
     })();
     </script>
 </body>
