@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EMOOLA LTD - Financial Infrastructure &amp; Mobile Intelligence. Developing professional market intelligence and physical asset monitoring solutions for financial institutions and mobile-first markets.">
+    <meta name="description" content="EMOOLA LTD - Financial Infrastructure & Mobile Intelligence. Developing professional market intelligence and physical asset monitoring solutions for financial institutions and mobile-first markets.">
     <meta name="keywords" content="financial infrastructure, mobile intelligence, market data, asset monitoring, PFX Markets">
-    <title>EMOOLA LTD - Financial Infrastructure &amp; Mobile Intelligence</title>
+    <title>EMOOLA LTD - Financial Infrastructure & Mobile Intelligence</title>
     <style>
         * {
             margin: 0;
@@ -274,56 +274,6 @@
             padding-top: 12px;
         }
         
-        /* Contact Section */
-        .contact {
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-            border-top: 1px solid #2a2a2a;
-        }
-        
-        .contact-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-bar {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 60px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .contact-item {
-            text-align: center;
-        }
-        
-        .contact-label {
-            font-size: 11px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 8px;
-        }
-        
-        .contact-value {
-            font-size: 15px;
-            color: #b0b0b0;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-        
-        .contact-value a {
-            color: #C5A059;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .contact-value a:hover {
-            color: #D4AF37;
-        }
-        
         /* Corporate / Legal Section */
         .legal {
             background: #0e0e0e;
@@ -377,19 +327,6 @@
         .legal-text a:hover {
             color: #C5A059;
             border-color: #C5A059;
-        }
-
-        .legal-reg {
-            display: inline-block;
-            font-family: 'SF Mono', 'Menlo', 'Monaco', monospace;
-            font-size: 12px;
-            color: #888;
-            background: rgba(197, 160, 89, 0.06);
-            border: 1px solid #2a2a2a;
-            padding: 3px 10px;
-            border-radius: 3px;
-            margin-top: 8px;
-            letter-spacing: 0.5px;
         }
 
         /* Satellite Entry Point */
@@ -513,7 +450,7 @@
             inset: 0;
             z-index: 10000;
             background: #0a0a0a;
-            opacity: 0.6;
+            opacity: 0;
             visibility: hidden;
             transition: opacity 0.45s ease, visibility 0.45s ease;
         }
@@ -603,113 +540,8 @@
         }
         
         .footer-copyright {
-
-        .footer-contact {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .footer-contact-item {
-            font-size: 13px;
-            color: #777;
-        }
-
-        .footer-label {
-            color: #888;
-            margin-right: 6px;
-        }
-
-        .footer-contact-item a {
-            color: #C5A059;
-            text-decoration: none;
-        }
-
-        .footer-contact-item a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 600px) {
-            .footer-contact {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
-        }
             font-size: 12px;
-
-        .footer-contact {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .footer-contact-item {
-            font-size: 13px;
-            color: #777;
-        }
-
-        .footer-label {
-            color: #888;
-            margin-right: 6px;
-        }
-
-        .footer-contact-item a {
-            color: #C5A059;
-            text-decoration: none;
-        }
-
-        .footer-contact-item a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 600px) {
-            .footer-contact {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
-        }
             color: #555;
-
-        .footer-contact {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .footer-contact-item {
-            font-size: 13px;
-            color: #777;
-        }
-
-        .footer-label {
-            color: #888;
-            margin-right: 6px;
-        }
-
-        .footer-contact-item a {
-            color: #C5A059;
-            text-decoration: none;
-        }
-
-        .footer-contact-item a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 600px) {
-            .footer-contact {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
-        }
         }
 
         .footer-contact {
@@ -737,14 +569,6 @@
 
         .footer-contact-item a:hover {
             text-decoration: underline;
-        }
-
-        @media (max-width: 600px) {
-            .footer-contact {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
         }
 
         /* Scroll Reveal */
@@ -757,6 +581,41 @@
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* iPad and Old Safari Fixes */
+        @supports not (display: grid) {
+            .feature-grid, .legal-grid {
+                display: block !important;
+            }
+            .feature-card, .legal-section {
+                margin-bottom: 20px;
+                display: block !important;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            section, .product, .legal {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+                animation: none !important;
+            }
+            
+            * {
+                animation-delay: 0s !important;
+                transition-delay: 0s !important;
+            }
+        }
+        
+        section {
+            -webkit-transform: none !important;
         }
         
         /* Responsive */
@@ -789,13 +648,14 @@
                 grid-template-columns: 1fr;
             }
 
-            .contact-bar {
-                gap: 36px;
-            }
-
             .sat-close {
                 top: 12px;
                 right: 12px;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 12px;
             }
         }
     </style>
@@ -807,12 +667,11 @@
                 <div class="logo">E</div>
                 <div>
                     <div class="company-name">EMOOLA LTD</div>
-                    <div class="tagline">Financial Infrastructure &amp; Mobile Intelligence</div>
+                    <div class="tagline">Financial Infrastructure & Mobile Intelligence</div>
                 </div>
             </div>
             <nav class="header-nav">
                 <a href="#product">Product</a>
-                <a href="#contact">Contact</a>
                 <a href="https://emoola.net/privacy.html">Privacy</a>
             </nav>
         </div>
@@ -832,7 +691,7 @@
     <section class="product reveal" id="product">
         <div class="product-content">
             <h2 class="section-title">Our Flagship Product</h2>
-            <p class="section-subtitle">Innovation in Market Intelligence &amp; Data Infrastructure</p>
+            <p class="section-subtitle">Innovation in Market Intelligence & Data Infrastructure</p>
             
             <div class="product-showcase">
                 <div class="product-name">PFX MARKETS</div>
@@ -844,21 +703,21 @@
                 
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <div class="feature-icon">&#x1F4CA;</div>
+                        <div class="feature-icon">📊</div>
                         <div class="feature-title">Market Intelligence</div>
                         <div class="feature-text">Real-time data visualisation and analysis infrastructure</div>
                         <div class="feature-detail">Multi-asset class coverage with institutional-grade data feeds and configurable alerting for portfolio monitoring.</div>
                     </div>
                     
                     <div class="feature-card">
-                        <div class="feature-icon">&#x1F6F0;&#xFE0F;</div>
+                        <div class="feature-icon">🛰️</div>
                         <div class="feature-title">Connectivity Resilience</div>
                         <div class="feature-text">Reliable data delivery designed for remote and demanding operating environments</div>
                         <div class="feature-detail">Redundant connectivity architecture ensuring continuous market access in low-bandwidth and off-grid conditions.</div>
                     </div>
                     
                     <div class="feature-card">
-                        <div class="feature-icon">&#x1F510;</div>
+                        <div class="feature-icon">🔐</div>
                         <div class="feature-title">Secure Infrastructure</div>
                         <div class="feature-text">Bank-grade encryption and data custody protocols</div>
                         <div class="feature-detail">End-to-end encryption with institutional key management and compliant data handling procedures.</div>
@@ -867,9 +726,7 @@
             </div>
         </div>
     </section>
-    
 
-<!-- Satellite Entry Point -->
     <div class="sat-entry">
         <button class="sat-trigger" id="satTrigger" aria-label="Open infrastructure monitoring" title="Infrastructure Monitoring">
             <div class="sat-ring-outer">
@@ -880,9 +737,8 @@
         </button>
         <div class="sat-hint">Live Infrastructure</div>
     </div>
-    
 
-<section class="legal reveal">
+    <section class="legal reveal">
         <div class="legal-content">
             <h2 class="section-title">Corporate Information</h2>
             
@@ -890,9 +746,9 @@
                 <div class="legal-section">
                     <div class="legal-title">Company Registration</div>
                     <div class="legal-text">
-                        EMOOLA LTD is incorporated in England &amp; Wales as a financial technology infrastructure provider, 
+                        EMOOLA LTD is incorporated in England & Wales as a financial technology infrastructure provider, 
                         developing mobile intelligence solutions for institutional markets.
-                        Verify via <a href="https://data.companieshouse.gov.uk/doc/company/09594521" target="_blank" rel="noopener noreferrer">Companies House</a>.
+                        Verify via <a href="https://find-and-update.company-information.service.gov.uk/" target="_blank" rel="noopener noreferrer">Companies House</a>.
                     </div>
                 </div>
                 
@@ -919,7 +775,6 @@
         </div>
     </section>
 
-
     <footer>
         <div class="footer-content">
             <div class="footer-company">EMOOLA LTD</div>
@@ -931,7 +786,7 @@
                 </div>
                 <div class="footer-contact-item">
                     <span class="footer-label">Registered Office:</span>
-                    <span>ASTON HOUSE, Redburn Road, Newcastle Upon Tyne, NE5 1NB, United Kingdom</span>
+                    <span>120 Avalon Drive, Newcastle Upon Tyne, NE15 7SF, United Kingdom</span>
                 </div>
             </div>
             
@@ -939,11 +794,10 @@
                 <a href="https://emoola.net/privacy.html">Privacy Policy</a>
             </div>
             
-            <div class="footer-copyright">&copy; 2026 EMOOLA LTD. All Rights Reserved. Registered in England &amp; Wales.</div>
+            <div class="footer-copyright">&copy; 2026 EMOOLA LTD. All Rights Reserved. Registered in England & Wales.</div>
         </div>
     </footer>
 
-<!-- Satellite Overlay -->
     <div class="sat-overlay" id="satOverlay" role="dialog" aria-modal="true" aria-label="Infrastructure monitoring">
         <button class="sat-close" id="satClose" aria-label="Close">&times;</button>
         <iframe id="satFrame" src="" title="Infrastructure Monitoring" loading="lazy"></iframe>
@@ -953,16 +807,29 @@
     (function() {
         'use strict';
 
-        /* Scroll reveal */
-        var els = document.querySelectorAll('.reveal');
-        var obs = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) {
-                if (e.isIntersecting) e.target.classList.add('visible');
-            });
-        }, { threshold: 0.08 });
-        els.forEach(function(el) { obs.observe(el); });
+        // Disable reveal animations on old iPads (iOS 5-10)
+        var isOldIOS = /iPad.*CPU.*OS [5-9]_/i.test(navigator.userAgent) || 
+                       /iPad.*CPU.*OS 10_/i.test(navigator.userAgent);
+        
+        if (isOldIOS) {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                reveals[i].style.opacity = '1';
+                reveals[i].style.transform = 'none';
+                reveals[i].classList.add('visible');
+            }
+        } else {
+            // Scroll reveal for modern browsers
+            var els = document.querySelectorAll('.reveal');
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) e.target.classList.add('visible');
+                });
+            }, { threshold: 0.08 });
+            els.forEach(function(el) { obs.observe(el); });
+        }
 
-        /* Satellite overlay */
+        // Satellite overlay
         var overlay = document.getElementById('satOverlay');
         var trigger = document.getElementById('satTrigger');
         var closeBtn = document.getElementById('satClose');
